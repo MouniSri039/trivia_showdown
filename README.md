@@ -1,17 +1,129 @@
-# trivia_showdown
+# Cloud Trivia Showdown 🎯
 
-A new Flutter project.
+A Flutter-based trivia application built with Dart that fetches live multiple-choice questions from the Open Trivia Database REST API.
+
+## Project Overview
+
+Cloud Trivia Showdown demonstrates how a Flutter application consumes REST API data, handles asynchronous network operations, manages application state, and provides interactive user feedback.
+
+The application fetches five easy multiple-choice questions and allows users to complete a trivia round, view their score, and replay with a new set of questions.
+
+## Features
+
+- **Live API Integration:** Fetches five questions using the Open Trivia Database API.
+- **JSON Parsing:** Converts API responses into structured question objects.
+- **Text Decoding:** Cleans encoded HTML entities in questions and answers.
+- **Shuffled Answers:** Randomizes answer choices.
+- **Loading State:** Displays a loading indicator while fetching questions.
+- **Error Handling:** Handles unsuccessful API responses, connection failures, and request timeouts.
+- **Interactive Quiz:** Provides four multiple-choice answers for each question.
+- **Answer Feedback:** Highlights correct answers in green and incorrect selections in red.
+- **Score Tracking:** Awards points only for the first answer selected per question.
+- **Progress Tracking:** Displays question numbers and round progress.
+- **Results Screen:** Displays the final score out of five.
+- **Score Sync Simulation:** Demonstrates an asynchronous score-submission flow.
+- **Replay:** Allows users to start a new round with freshly fetched questions.
+
+## Technology Stack
+
+- Flutter
+- Dart
+- HTTP package
+- Open Trivia Database REST API
+- JSON
+
+## API Endpoint
+
+The application uses the following endpoint:
+
+```text
+https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple
+```
+
+The application checks the HTTP response status and the API response code before processing the returned questions.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK
+- Dart SDK
+- Visual Studio Code or Android Studio
+- Android emulator or physical Android device
+- Internet connection
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+
+```bash
+git clone https://github.com/MouniSri039/trivia_showdown.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd trivia_showdown
+```
+
+3. Install dependencies:
+
+```bash
+flutter pub get
+```
+
+4. Check connected devices:
+
+```bash
+flutter devices
+```
+
+5. Run the application:
+
+```bash
+flutter run
+```
+
+## Testing
+
+Run static code analysis:
+
+```bash
+flutter analyze
+```
+
+Run the widget tests:
+
+```bash
+flutter test
+```
+
+## Score Synchronization
+
+The application currently uses the classroom score-sync simulation provided by the assignment starter code.
+
+The simulation waits asynchronously, displays a confirmation, and indicates that no backend request was sent.
+
+No actual cloud database or remote leaderboard persistence is implemented. A real score submission would require an instructor-provided endpoint and confirmation from the backend.
+
+## Development History
+
+The project was initialized as a Flutter application, followed by HTTP dependency setup and integration of the provided trivia starter code.
+
+Development and verification included:
+
+- REST API question retrieval and JSON parsing.
+- Interactive answer selection and score tracking.
+- Results, score-sync simulation, and replay.
+- Widget test configuration and static analysis.
+- Git version control and GitHub repository setup.
+
+## GitHub Repository
+
+[https://github.com/MouniSri039/trivia_showdown](https://github.com/MouniSri039/trivia_showdown)
+
+## Assignment
+
+CSC 4360 – Mobile App Development
+
+In-Class Activity #15: API-to-Cloud Trivia Showdown
