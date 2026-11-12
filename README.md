@@ -1,4 +1,4 @@
-# Cloud Trivia Showdown 🎯
+# Cloud Trivia Showdown 
 
 A Flutter-based trivia application built with Dart that fetches live multiple-choice questions from the Open Trivia Database REST API.
 
@@ -12,8 +12,8 @@ The application fetches five easy multiple-choice questions and allows users to 
 
 - **Live API Integration:** Fetches five questions using the Open Trivia Database API.
 - **JSON Parsing:** Converts API responses into structured question objects.
-- **Text Decoding:** Cleans encoded HTML entities in questions and answers.
-- **Shuffled Answers:** Randomizes answer choices.
+- **Text Decoding:** Cleans supported encoded HTML entities in questions and answers.
+- **Shuffled Answers:** Randomizes answer choices for each question.
 - **Loading State:** Displays a loading indicator while fetching questions.
 - **Error Handling:** Handles unsuccessful API responses, connection failures, and request timeouts.
 - **Interactive Quiz:** Provides four multiple-choice answers for each question.
@@ -40,7 +40,7 @@ The application uses the following endpoint:
 https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple
 ```
 
-The application checks the HTTP response status and the API response code before processing the returned questions.
+The application checks both the HTTP response status and the API response code before processing the returned questions.
 
 ## Getting Started
 
@@ -84,25 +84,44 @@ flutter devices
 flutter run
 ```
 
-## Testing
+## Testing and Validation
 
-Run static code analysis:
+The application was tested on an Android emulator.
+
+The following checks were performed:
+
+- Successfully fetched and displayed five live trivia questions.
+- Observed the loading indicator during question retrieval.
+- Observed a connection timeout error when the API request did not complete.
+- Tested correct and incorrect answer feedback.
+- Verified that the correct answer appears in green and an incorrect selected answer appears in red.
+- Tested question progression and final score calculation.
+- Tested the replay functionality.
+- Tested the simulated score synchronization and its confirmation message.
+
+### Validation Commands
+
+Static code analysis:
 
 ```bash
 flutter analyze
 ```
 
-Run the widget tests:
+Result: No issues found.
+
+Widget tests:
 
 ```bash
 flutter test
 ```
 
+Result: All tests passed.
+
 ## Score Synchronization
 
 The application currently uses the classroom score-sync simulation provided by the assignment starter code.
 
-The simulation waits asynchronously, displays a confirmation, and indicates that no backend request was sent.
+The simulation waits asynchronously, displays a confirmation, and clearly indicates that no backend request was sent.
 
 No actual cloud database or remote leaderboard persistence is implemented. A real score submission would require an instructor-provided endpoint and confirmation from the backend.
 
@@ -114,16 +133,20 @@ Development and verification included:
 
 - REST API question retrieval and JSON parsing.
 - Interactive answer selection and score tracking.
-- Results, score-sync simulation, and replay.
-- Widget test configuration and static analysis.
+- Correct and incorrect answer feedback.
+- Results screen, score-sync simulation, and replay.
+- Widget test execution and static analysis.
 - Git version control and GitHub repository setup.
+- README documentation and project setup instructions.
 
 ## GitHub Repository
 
-[https://github.com/MouniSri039/trivia_showdown](https://github.com/MouniSri039/trivia_showdown)
+[Cloud Trivia Showdown – GitHub Repository](https://github.com/MouniSri039/trivia_showdown)
 
-## Assignment
+## Assignment Information
 
-CSC 4360 – Mobile App Development
+**Course:** CSC 4360 – Mobile App Development
 
-In-Class Activity #15: API-to-Cloud Trivia Showdown
+**Activity:** In-Class Activity #15 – API-to-Cloud Trivia Showdown
+
+**Platform:** Flutter and Dart
