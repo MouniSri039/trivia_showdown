@@ -88,6 +88,12 @@ flutter run
 
 The application was tested on an Android emulator.
 
+**Testing Environment:**
+- Flutter 3.47.2
+- Dart 3.13.2
+- Android Emulator
+- Visual Studio Code
+
 The following checks were performed:
 
 - Successfully fetched and displayed five live trivia questions.
@@ -101,7 +107,7 @@ The following checks were performed:
 
 ### Validation Commands
 
-**Static code analysis:**
+**Static Code Analysis**
 
 ```bash
 flutter analyze
@@ -109,7 +115,7 @@ flutter analyze
 
 Result: No issues found.
 
-**Widget tests:**
+**Widget Tests**
 
 ```bash
 flutter test
