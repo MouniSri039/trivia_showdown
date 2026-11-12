@@ -101,7 +101,7 @@ The following checks were performed:
 
 ### Validation Commands
 
-Static code analysis:
+**Static code analysis:**
 
 ```bash
 flutter analyze
@@ -109,7 +109,7 @@ flutter analyze
 
 Result: No issues found.
 
-Widget tests:
+**Widget tests:**
 
 ```bash
 flutter test
@@ -124,6 +124,32 @@ The application currently uses the classroom score-sync simulation provided by t
 The simulation waits asynchronously, displays a confirmation, and clearly indicates that no backend request was sent.
 
 No actual cloud database or remote leaderboard persistence is implemented. A real score submission would require an instructor-provided endpoint and confirmation from the backend.
+
+## Graduate Critical Thinking
+
+### 1. Offline and Restart Experience
+
+If the app loses its internet connection, I would like it to remember the questions that were already downloaded so that users can still continue playing or start another round without immediately needing an internet connection.
+
+To do this, I would store the last successfully downloaded set of five questions locally using SQLite. I would also save details such as when the questions were downloaded and whether they came from the live API or local storage. This would help the app identify whether the questions are fresh or cached.
+
+When users play with cached questions, I would show a small message saying that they are using offline questions. If the app only has some of the five questions saved, I would not treat them as a complete round. Instead, I would explain that the questions are incomplete and give the user an option to reconnect and try again.
+
+I think this approach is better than making the app completely dependent on an internet connection. However, cached questions might not always be the latest ones, so showing their status and download time is important.
+
+### 2. Local Score History vs. Shared Leaderboard
+
+If I decide to add score history before connecting the app to a real backend, I would store each completed attempt locally using SQLite. Each record could include the score, total number of questions, and the date the round was completed.
+
+I would keep this section separate from a leaderboard and call it **My Local Score History**. I would also clearly mention that these scores are saved only on the user's device and are not uploaded or shared with other players. This would prevent users from thinking that their scores are part of a global ranking.
+
+I would choose SQLite instead of SharedPreferences because score history can contain multiple records, and SQLite is more suitable for storing and managing that kind of data. SharedPreferences would be a simpler option, but it is better for small settings such as user preferences.
+
+One test I would perform is to save a score, turn off the internet, and restart the app. The saved score should still appear under local history, with a clear local-only label. The app should never suggest that the score was uploaded or added to a shared leaderboard.
+
+This approach would let me provide score history even before a backend is available, while keeping the difference between local data and shared results clear.
+
+*Note: These are proposed design improvements for future development. Local question caching and local score history are not currently implemented in this application.*
 
 ## Development History
 
@@ -145,8 +171,6 @@ Development and verification included:
 
 ## Assignment Information
 
-**Course:** CSC 4360 – Mobile App Development
-
-**Activity:** In-Class Activity #15 – API-to-Cloud Trivia Showdown
-
-**Platform:** Flutter and Dart
+- **Course:** CSC 4360 – Mobile App Development
+- **Activity:** In-Class Activity #15 – API-to-Cloud Trivia Showdown
+- **Platform:** Flutter and Dart
